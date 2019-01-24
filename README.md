@@ -3,14 +3,14 @@
 # Usage
 To use this app
 
-clone
-cd epic-adventures/epic-adventures-api
-run bundle install
-rake db:migrate
-cd ../epic-adventures-client
-run npm install
-cd ../epic-adventures-api
-rails start
+* clone
+* cd epic-adventures/epic-adventures-api
+* run bundle install
+* rake db:migrate
+* cd ../epic-adventures-client
+* run npm install
+* cd ../epic-adventures-api
+* rails start
 
 # Contribution
 For submitting something back, be it a patch, some documentation, or new feature requires some level of community interactions.

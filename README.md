@@ -7,10 +7,10 @@ To use this app
 * cd epic-adventures/epic-adventures-api
 * run bundle install
 * rake db:migrate
+* rails s
 * cd ../epic-adventures-client
 * run npm install
-* cd ../epic-adventures-api
-* rails start
+* npm start
 
 # Contribution
 For submitting something back, be it a patch, some documentation, or new feature requires some level of community interactions.

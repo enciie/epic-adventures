@@ -20,7 +20,7 @@ class TripCard extends Component {
                   <CardText>
                       By: {trip.username}
                   </CardText>
-                  <Button href={`/trips/${trip.id}`}>View Adventure</Button>
+                  <Button className="trip-card-button" href={`/trips/${trip.id}`}>View Adventure</Button>
               </CardBody>
           </Card>
       </Col>

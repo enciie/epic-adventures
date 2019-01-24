@@ -69,6 +69,7 @@ const mapStateToProps = state => {
   console.log("state", state)
   return {
       trip: state.trips.current,
+      trips: state.trips.all,
       user: state.user.current
   }
 }

@@ -21,7 +21,7 @@ export default function tripsReducer(state = initialState, action) {
             let all = [...state.all]
 
             let idx = all.findIndex(trip => trip.id === action.payload.id)
-            
+
             all.splice(idx, 1, action.payload)
             console.log('EDIT_TRIP...', { ...state, all: all, current: action.payload } )
             return {...state, all: all, current: action.payload }

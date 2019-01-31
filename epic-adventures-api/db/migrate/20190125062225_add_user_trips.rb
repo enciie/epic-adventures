@@ -1,4 +1,4 @@
-class UserTrips < ActiveRecord::Migration[5.2]
+class AddUserTrips < ActiveRecord::Migration[5.2]
   def change
     create_table :user_trips do |t|
       t.integer :user_id

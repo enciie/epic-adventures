@@ -24,6 +24,6 @@ const Buttons = ({ user, trip, tripId, match, deleteTrip }) =>
         </button>
       </div>
     </>
-  ) : ("")
+  ) : null
 
 export default Buttons;

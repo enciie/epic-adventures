@@ -32,8 +32,6 @@ class TripForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log("This state", this.state)
-
     this.props.createTrip(this.state)
 
     this.setState({
@@ -48,8 +46,6 @@ class TripForm extends Component {
 
   render() {
     const { name, description, location, img_url } = this.state
-    console.log("stateAddForm", this.state)
-    console.log("propsAddForm", this.props)
     return (
       <div>
 

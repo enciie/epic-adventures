@@ -58,10 +58,11 @@ export const createTrip = trip => {
     return dispatch => {
         fetch(`${baseUrl}/trips`, data)
             .then(response => response.json())
-            .then(trip => dispatch({
+            .then(trip => {
+              dispatch({
                 type: 'CREATE_TRIP',
                 payload: trip
-            }))
+            })})
             .catch(err => err)
     }
 }
@@ -108,8 +109,3 @@ export const deleteTrip = id => {
             .catch(err => err)
     }
 }
-
-//redux thunk allows us to return a function inside of our action bindActionCreators
-// i/o plain old js object. that returned function recieves the store's dispatch func
-//and with that we are able to dispatch multiple actions: (1) one to place the state in loading state
-//(2) to update our store

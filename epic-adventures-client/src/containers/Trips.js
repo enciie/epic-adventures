@@ -12,15 +12,44 @@ import '../stylesheets/Trip.css'
 
 class Trips extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      sortedTrips: false
+    }
+  }
+
   componentDidMount() {
     this.props.fetchUser()
     this.props.fetchTrips()
   }
 
+  handleSort = () => {
+    this.setState({sortedTrips: !this.state.sortedTrips})
+  }
+
+  renderTrips = (trips) => {
+    const tripList = trips.slice(0)
+    if (this.state.sortedTrips === true) {
+      tripList.sort(function(a, b){
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      })
+      return tripList.map(trip => <TripCard key={trip.id} trip={trip} />)
+    }
+    else {
+      return trips.map(trip => <TripCard key={trip.id} trip={trip} />)
+    }
+  }
+
   render() {
-    console.log("User", this.props.user)
-    console.log("all trips", this.props.trips)
-    // [{}, {}]
     const { user, trips } = this.props
 
     return (
@@ -29,27 +58,21 @@ class Trips extends Component {
         <div className="TripListContainter">
           <p className="Username">Logged in as: {user.username}</p>
           <h1 className="Header">ADVENTURE AWAITS</h1>
-          {trips.map(trip =>
-              <TripCard
-                  key={trip.id}
-                  trip={trip}
-              />
-          )}
+          <button onClick={this.handleSort}>sort</button>
+          {this.renderTrips(trips)}
         </div>
       </div>
     )
   }
 }
-//recieve state fron the store whenever there is a change and make that data available to the component as props
+
 const mapStateToProps = state => {
-    console.log("state", state)
     return {
         user: state.user.current,
         trips: state.trips.all
     }
 }
 
-//let's us invoke our actions directly
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchUser,
     fetchTrips

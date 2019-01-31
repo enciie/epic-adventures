@@ -16,10 +16,15 @@ class UserTrips extends Component {
     this.props.fetchTrips();
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.user.id !== prevProps.user.id ){
+      this.props.fetchTrips();
+    }
+  }
+
   render() {
     const { user, trips, match } = this.props
-    const userTrips = trips.filter(trip => trip.user.id === user.id)
-    console.log("UserTrips", userTrips)
+    const userTrips = trips.filter(trip => trip.user && trip.user.id === user.id)
     return (
       <div>
 
@@ -42,7 +47,6 @@ class UserTrips extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("UserTripState", state)
   return {
     user: state.user.current,
     trips: state.trips.all

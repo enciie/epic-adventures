@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Button, Card, CardBody, CardImage, CardTitle, CardText, Col } from 'mdbreact';
+import Likes from './Likes'
 
 import '../stylesheets/Trip.css'
 
@@ -20,7 +21,11 @@ class TripCard extends Component {
                   <CardText>
                       By: {trip.username}
                   </CardText>
-                  <Button className="trip-card-button" href={`/trips/${trip.id}`}>View Adventure</Button>
+                  <Link to={`/trips/${trip.id}`}>
+                    <Button className="trip-card-button">View Adventure
+                    </Button>
+                  </Link>
+                  <Likes tripId={trip.id} />
               </CardBody>
           </Card>
       </Col>

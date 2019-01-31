@@ -4,9 +4,13 @@ class Likes extends Component {
 
   constructor() {
     super()
+
+    this.state = {
+      likes: 0
+    };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const likes = parseInt(localStorage.getItem(`likes-${this.props.tripId}`)) || 0
 
     this.setState({likes: likes})
@@ -16,18 +20,15 @@ class Likes extends Component {
     this.setState(prevState => ({
       likes: prevState.likes + 1
     }), () => {console.log(this.state)
-    localStorage.setItem(`likes-${this.props.tripId}`, this.state.likes)
-  });
-
+      localStorage.setItem(`likes-${this.props.tripId}`, this.state.likes)
+    });
   };
-
 
   render() {
 
     return (
       <div>
-        {this.state.likes}
-        <button onClick={this.increment}> Like </button>
+        <button onClick={this.increment}>Like</button>
       </div>
     )
   }

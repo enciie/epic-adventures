@@ -8,7 +8,7 @@ const Comment = ({ comment, user, deleteComment, tripId }) =>
     {user.id === comment.user_id ? (
       <button className="deleteComment btn" onClick={() => deleteComment(comment.id, tripId)}>X</button>
     ) : (
-        ""
+        null
       )}
     <p className="">{comment.content}</p>
 

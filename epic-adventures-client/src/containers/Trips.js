@@ -29,11 +29,12 @@ class Trips extends Component {
   }
 
   renderTrips = (trips) => {
+
     const tripList = trips.slice(0)
     if (this.state.sortedTrips === true) {
       tripList.sort(function(a, b){
-        const nameA = a.name.toUpperCase();
-        const nameB = b.name.toUpperCase();
+        const nameA = a.username.toUpperCase();
+        const nameB = b.username.toUpperCase();
         if (nameA < nameB) {
           return -1;
         }
@@ -45,7 +46,16 @@ class Trips extends Component {
       return tripList.map(trip => <TripCard key={trip.id} trip={trip} />)
     }
     else {
-      return trips.map(trip => <TripCard key={trip.id} trip={trip} />)
+      tripList.sort(function(a, b) {
+        if (a.id < b.id){
+          return 1;
+        } else if (a.id > b.id){
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+      return tripList.map(trip => <TripCard key={trip.id} trip={trip} />)
     }
   }
 
@@ -58,7 +68,7 @@ class Trips extends Component {
         <div className="TripListContainter">
           <p className="Username">Logged in as: {user.username}</p>
           <h1 className="Header">ADVENTURE AWAITS</h1>
-          <button onClick={this.handleSort}>sort</button>
+          <button className="sort-button" onClick={this.handleSort}>Sort By User</button>
           {this.renderTrips(trips)}
         </div>
       </div>

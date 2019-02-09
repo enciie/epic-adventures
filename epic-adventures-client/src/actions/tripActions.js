@@ -109,3 +109,25 @@ export const deleteTrip = id => {
             .catch(err => err)
     }
 }
+
+export const increaseLike = (tripLikes, tripId) => {
+    let data = {
+        method: 'PATCH',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.jwt
+        },
+        body: JSON.stringify({ likes: tripLikes })
+    }
+
+    return dispatch => {
+        fetch(`${baseUrl}/trips/${tripId}`, data)
+            .then(response => response.json())
+            .then(trip => dispatch({
+                type: 'INCREASE_LIKES',
+                payload: trip
+            }))
+            .catch(err => err)
+    }
+}

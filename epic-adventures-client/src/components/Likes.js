@@ -1,37 +1,21 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import { increaseLike } from '../actions/tripActions'
 
 class Likes extends Component {
 
-  constructor() {
-    super()
-
-    this.state = {
-      likes: 0
-    };
-  }
-
-  componentDidMount() {
-    const likes = parseInt(localStorage.getItem(`likes-${this.props.tripId}`)) || 0
-
-    this.setState({likes: likes})
-  }
-
-  increment = () => {
-    this.setState(prevState => ({
-      likes: prevState.likes + 1
-    }), () => {console.log(this.state)
-      localStorage.setItem(`likes-${this.props.tripId}`, this.state.likes)
-    });
-  };
-
   render() {
-
+    const { trip, tripLikes } = this.props
     return (
-      <div>
-        <button onClick={this.increment}>Like</button>
+      <div className="text-center">
+        <button onClick={ () => {
+          this.props.increaseLike(tripLikes + 1, trip.id)
+        }}>
+          Like
+        </button> {tripLikes}
       </div>
     )
   }
 }
 
-export default Likes;
+export default connect(null, { increaseLike })(Likes);

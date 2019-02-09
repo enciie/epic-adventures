@@ -35,6 +35,12 @@ export default function tripsReducer(state = initialState, action) {
             all[idx].comments = all[idx].comments.filter(comment => comment.id !== action.payload.id)
             return { ...state, all: all, current: all[idx] }
 
+        case 'INCREASE_LIKES':
+            all = [...state.all]
+            idx = all.findIndex(trip => trip.id === action.payload.id)
+            all[idx].likes = action.payload.likes
+            return { ...state, all:all }
+
         default:
             return state
     }

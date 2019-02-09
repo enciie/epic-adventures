@@ -11,21 +11,19 @@ class TripCard extends Component {
     return (
       <Col>
           <Card tripid={trip.id}>
+            <Link to={`/trips/${trip.id}`}>
               <CardImage
                   className="trip-card img-fluid"
                   src={trip.img_url}
                   waves
               />
+            </Link>
               <CardBody>
                   <CardTitle>{trip.name}</CardTitle>
                   <CardText>
                       By: {trip.username}
                   </CardText>
-                  <Link to={`/trips/${trip.id}`}>
-                    <Button className="trip-card-button">View Adventure
-                    </Button>
-                  </Link>
-                  <Likes tripId={trip.id} />
+                  <Likes tripLikes={trip.likes} trip={trip} />
               </CardBody>
           </Card>
       </Col>

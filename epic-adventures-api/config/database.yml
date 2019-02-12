@@ -83,3 +83,4 @@ production:
   database: epic-adventure-app-api_production
   username: epic-adventure-app-api
   password: <%= ENV['EPIC-ADVENTURE-APP-API_DATABASE_PASSWORD'] %>
+  url: <%= ENV["DATABASE_URL"] %>

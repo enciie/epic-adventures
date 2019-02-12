@@ -1,5 +1,9 @@
 # epic-adventures
 
+A community-driven application for epic adventure discovery. Users can share the joy of travel and adventure, by inspiring people to discover explore, and share their own adventures.
+
+<img width="1151" alt="screen shot 2019-02-11 at 11 22 33 pm" src="https://user-images.githubusercontent.com/35680513/52618542-fb9c5280-2e53-11e9-8b40-409d2178e6ba.png">
+
 # Usage
 To use this app
 
